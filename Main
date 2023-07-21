@@ -1,0 +1,85 @@
+public class Main 
+{
+
+   public static void main(String[] args) 
+   {
+       // Ayşegül Yıldız
+       
+       Scanner scan;
+       int input;
+       int number;
+       int num;
+       String word;
+       scan = new Scanner(System.in);
+       
+       // ask for choice until the choice input is 1, 2 or, 3
+       do 
+       {
+           System.out.println( "Choice must be between 1 and 3!");
+           System.out.printf( "Menu: %n %20s %n %20s %n %20s", "1 - Special Number", "2- Vowel Word     ", "3 - Quit          " );
+           System.out.printf( "%nEnter your choice: " );
+           input = scan .nextInt();
+        }
+        while ( (input > 4 || input < 0));
+        
+        for (;input==1;)
+        {
+            // ask for a number until the number has four digits
+            do
+            { 
+                System.out.print( "Enter number: ");
+                number = scan.nextInt();
+            }
+            while ( String.valueOf(number).length() != 4);
+            
+            int dbca = 4 * number;
+            num = number;
+            // find all of the digits of the num by getting the number left after dividing it to 10
+            int d = num % 10;
+            // equal num to the result of num divided by 10
+            num = num /10;
+            int c = num % 10;
+            num = num /10;
+            int b = num % 10;
+            num = num /10;
+            int a = num % 10;
+
+            // check if the version of the number multiplied by 4 equals to reverse version of number
+            if ( dbca % 10 == a && (dbca / 10) % 10 == b && (dbca / 100) % 10 == c && (dbca / 1000) % 10 == d)
+            {
+                System.out.printf( "%d is a very special number." , number );
+
+            }
+            else 
+            {
+                System.out.printf("%d is not a very special number. %n" , number);
+            }
+            System.out.printf( "%nEnter your choice: " );
+            input = scan .nextInt();
+        } 
+
+        // if input equals to 2 ask for a word input
+        for (;input==2;)
+        {
+            System.out.print("Enter a word: ");
+            word = scan.next();
+
+            // check if the word includes all of the five vowels
+            if ( (word.indexOf('a') != -1 || word.indexOf('A') != -1) && (word.indexOf('e') != -1 || word.indexOf('E') != -1) && (word.indexOf('i') != -1 || word.indexOf('I')!= -1) && (word.indexOf('o') != -1 || word.indexOf('O') != -1) && (word.indexOf('u') != -1 || word.indexOf('U') != -1))
+            {
+                System.out.printf( "%s is a vowel word ", word);
+            }
+            else
+            {
+                System.out.printf("%s is not a vowel word %n", word);
+            }
+            System.out.printf( "%nEnter your choice: " );
+            input = scan .nextInt(); 
+        }
+        
+        if (input==3){
+            System.out.println("Goodbye!");
+        }
+        scan.close();
+    }
+}
